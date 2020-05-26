@@ -1,8 +1,8 @@
-
 import { EventEmitter, Injectable } from '@angular/core';
-import { Recipe } from '../recipe.model';
-import { Ingredient } from 'src/app/shared/ingredient.model';
-import { ShoppingListService } from 'src/app/shopping-list/ShoppingListService/shopping-list.service';
+
+import { Recipe } from './recipe.model';
+import { Ingredient } from '../shared/ingredient.model';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
 @Injectable()
 export class RecipeService {
@@ -28,11 +28,7 @@ export class RecipeService {
 
   constructor(private slService: ShoppingListService) {}
 
-  getRecipe(){
-    // just because arrays and objects are reference types in JavaScript
-    // if we change smth on this array, will change it in the array in the service
-    // that is why we need to create a new array 
-    // which will hold the copy of the previous array 
+  getRecipes() {
     return this.recipes.slice();
   }
 
@@ -40,4 +36,3 @@ export class RecipeService {
     this.slService.addIngredients(ingredients);
   }
 }
-
